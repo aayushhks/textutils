@@ -1,7 +1,9 @@
 import React, {useState} from 'react'                            // imported {usestate} from react
+// import {mode,toggleMode} from './App.mjs' 
 
 
 export default function TextForm(props) {
+    
     const handleUpclick = ()=>{
         console.log("uppercase button was clicked " + "text - " + text)
         let newtext = text.toUpperCase();
@@ -41,26 +43,27 @@ export default function TextForm(props) {
     // setText("hello there");     correct way to change the text
     return ( 
     <div>
-        <div className="container">
+        <div className="container" style={{color: props.mode ==='light'?'#00081c':'white'}}>
             <div className="mb-3">
                 <h1>{props.heading}</h1>
                 <div className="mb-3" >
-                <textarea className="form-control" value={text} onChange={handleonChange} id="myBox" rows="10"></textarea>
+                <textarea className="form-control" value={text} onChange={handleonChange} style={{backgroundColor: props.mode ==='light'?'white':'#00081c', color: props.mode ==='dark'?'white':'#00081c'}} id="myBox" rows="10"></textarea>
                 </div>
             </div>
         </div>
 
-        <button className="btn btn primary mx-1 btn-dark bg-dark" onClick={handleUpclick}>Convert to uppercase</button>
-        <button className="btn btn primary mx-1 btn-dark bg-dark" onClick={handleLoclick}>Convert to lowercase</button>
-        <button className="btn btn primary mx-1 btn-dark bg-dark" onClick={handleClrclick}>Clear text</button>
-        <button className="btn btn primary mx-1 btn-dark bg-dark" onClick={handleCopy}>Copy text</button>
-        <button className="btn btn primary mx-1 btn-dark bg-dark" onClick={handleWhitespace}>Remove space</button>
-        <div className="container my-2">
+        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleUpclick} >Convert to uppercase</button>
+        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleLoclick} >Convert to lowercase</button>
+        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleClrclick} >Clear text</button>
+        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`}onClick={handleCopy} >Copy text</button>
+        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleWhitespace} >Remove space</button>
+
+        <div className="container my-2" style={{color: props.mode ==='dark'?'white':'#00081c'}}>
             <h1>You text summary</h1>
             <p>{text.length} characters and {text.split(" ").length} words</p>
             <p>{0.008 * text.split(" ").length} Minimum reading time (in Minutes).</p>
             <h1>Preview</h1>
-            <p>{text}</p>
+            <p>{text.length>0?text:"Enter something in textbox to preview it here."}</p>
         </div>
         
     </div>
