@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css'; 
 // import About from './Components/Navbar/AboutUs';
-import Navbar from    './Components/Navbar/Navbar';
-import TextForm from  './Components/Navbar/TextForm';
+import Navbar from    './Components/Navbar';
+import TextForm from  './Components/TextForm';
 
 function App() {
 
