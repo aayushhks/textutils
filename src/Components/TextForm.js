@@ -8,16 +8,19 @@ export default function TextForm(props) {
         console.log("uppercase button was clicked " + "text - " + text)
         let newtext = text.toUpperCase();
         setText(newtext)
+        props.showAlert("Converted to uppercase","success");
     };
     const handleLoclick = ()=>{
         console.log("Lowercase button was clicked " + "text - " + text)
         let newtext = text.toLowerCase();
         setText(newtext)
+        props.showAlert("Converted to lowercase","success");
     };
     const handleClrclick = ()=>{
         console.log("CLear text button was clicked " + "text - " + text)
         let newtext = '';
         setText(newtext)
+        props.showAlert("In clearing the text","success");
     };
 
     const handleonChange = (event)=>{
@@ -30,12 +33,14 @@ export default function TextForm(props) {
         let newtext = document.getElementById("myBox");
         newtext.select()
         navigator.clipboard.writeText(newtext.value);
+        props.showAlert("In copying the text","success");
     };
 
     const handleWhitespace=()=>{
         console.log("Remove space button was clicked " + "text - " + text)
         let newtext = text.split(/[ ]+/)
         setText(newtext.join(' '))
+        props.showAlert("In removing the whitespace","success");
     }
 
     const [text, setText] = useState('enter text here');
@@ -60,8 +65,8 @@ export default function TextForm(props) {
 
         <div className="container my-2" style={{color: props.mode ==='dark'?'white':'#00081c'}}>
             <h1>Your text summary</h1>
-            <p>{text.length} characters and {text.split(" ").length} words</p>
-            <p>{text.length>0?0.008 * text.split(" ").length:"Enter some text to get the "} reading time(in Minutes).</p>
+            <p>{text.length} characters and {text.split(" ").length>1 ?  text.split(" ").length-1 : 0} words</p>
+            <p>{text.length>0 ? 0.008 * text.split(" ").length:"Enter some text to get the "} reading time(in Minutes).</p>
             <h1>Preview</h1>
             <p>{text.length>0?text:"Enter something in textbox to preview it here."}</p>
         </div>
