@@ -57,11 +57,11 @@ export default function TextForm(props) {
             </div>
         </div>
 
-        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleUpclick} >Convert to uppercase</button>
-        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleLoclick} >Convert to lowercase</button>
-        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleClrclick} >Clear text</button>
-        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`}onClick={handleCopy} >Copy text</button>
-        <button className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleWhitespace} >Remove space</button>
+        <button disabled= {text.length===0} className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleUpclick} >Convert to uppercase</button>
+        <button disabled= {text.length===0} className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleLoclick} >Convert to lowercase</button>
+        <button disabled= {text.length===0} className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleClrclick} >Clear text</button>
+        <button disabled= {text.length===0} className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`}onClick={handleCopy} >Copy text</button>
+        <button disabled= {text.length===0} className={`btn btn primary mx-1 btn-${props.mode} bg-${props.mode}`} onClick={handleWhitespace} >Remove space</button>
 
         <div className="container my-2" style={{color: props.mode ==='dark'?'white':'#00081c'}}>
             <h1>Your text summary</h1>
